@@ -9,20 +9,8 @@ jobs:
         fail-fast: false
         matrix:
           cfg:
-            - { model: "rt-ax92u",      sdk: "src-rt-5.02axhnd",      ui: "default",  skip: false }
-            - { model: "dsl-ax82u",     sdk: "src-rt-5.02axhnd.675x", ui: "default",  skip: false }
-            - { model: "tuf-ax5400",    sdk: "src-rt-5.02axhnd.675x", ui: "default",  skip: false }
-            - { model: "tuf-ax5400",    sdk: "src-rt-5.02axhnd.675x", ui: "tuf",      skip: false }
             - { model: "tuf-ax3000",    sdk: "src-rt-5.02axhnd.675x", ui: "default",  skip: false }
             - { model: "tuf-ax3000",    sdk: "src-rt-5.02axhnd.675x", ui: "tuf",      skip: false }
-            - { model: "rt-ax82u",      sdk: "src-rt-5.02axhnd.675x", ui: "default",  skip: false }
-            - { model: "rt-ax95q",      sdk: "src-rt-5.02axhnd.675x", ui: "default",  skip: false }
-            - { model: "rt-axe95q",     sdk: "src-rt-5.02axhnd.675x", ui: "default",  skip: false }
-            - { model: "rt-ax82u_v2",   sdk: "src-rt-5.04axhnd.675x", ui: "default",  skip: false }
-            - { model: "rt-ax5400",     sdk: "src-rt-5.04axhnd.675x", ui: "default",  skip: false }
-            - { model: "tuf-ax3000_v2", sdk: "src-rt-5.04axhnd.675x", ui: "default",  skip: false }
-            - { model: "tuf-ax3000_v2", sdk: "src-rt-5.04axhnd.675x", ui: "tuf",      skip: false }
-            - { model: "rt-ax58u_v2",   sdk: "src-rt-5.04axhnd.675x", ui: "default",  skip: false }
       container:
         image: gnuton/asuswrt-merlin-toolchains-docker:latest
         env:
@@ -241,17 +229,7 @@ jobs:
             if [ "$BASELINE" = "3006" ]; then 
               echo "GT-BE98#FW${MAJOR_VER}#EXT${MINOR_VER}" >  ${UPDATE_DIR}/manifest_${BASELINE}.txt
             else
-              echo "DSL-AX82U#FW${MAJOR_VER}#EXT${MINOR_VER}"      >  ${UPDATE_DIR}/manifest2.txt
-              echo "RT-AX82U#FW${MAJOR_VER}#EXT${MINOR_VER}"       >> ${UPDATE_DIR}/manifest2.txt
-              echo "RT-AX82U_V2#FW${MAJOR_VER}#EXT${MINOR_VER}"    >> ${UPDATE_DIR}/manifest2.txt
-              echo "RT-AX92U#FW${MAJOR_VER}#EXT${MINOR_VER}"       >> ${UPDATE_DIR}/manifest2.txt
-              echo "RT-AX5400#FW${MAJOR_VER}#EXT${MINOR_VER}"      >> ${UPDATE_DIR}/manifest2.txt
-              echo "TUF-AX5400#FW${MAJOR_VER}#EXT${MINOR_VER}"     >> ${UPDATE_DIR}/manifest2.txt
               echo "TUF-AX3000#FW${MAJOR_VER}#EXT${MINOR_VER}"     >> ${UPDATE_DIR}/manifest2.txt
-              echo "TUF-AX3000_V2#FW${MAJOR_VER}#EXT${MINOR_VER}"  >> ${UPDATE_DIR}/manifest2.txt
-              echo "RT-AX95Q#FW${MAJOR_VER}#EXT${MINOR_VER}"       >> ${UPDATE_DIR}/manifest2.txt
-              echo "RT-AXE95Q#FW${MAJOR_VER}#EXT${MINOR_VER}"      >> ${UPDATE_DIR}/manifest2.txt
-              echo "RT-AX58U_V2#FW${MAJOR_VER}#EXT${MINOR_VER}"    >> ${UPDATE_DIR}/manifest2.txt
             fi
 
             cp "${CHANGELOG_FILE}" "${UPDATE_DIR}/${RELEASE_NOTE_FILE}"
